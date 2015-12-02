@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# the interpreter to run
+prog="sh"
+
+USAGE='shfs - shell filesystem
+ipfs-based filesystem whose files are the
+result of executing shell programs
+'
+
+cmd="$1"
+shift
+
+case "$cmd" in
+cat) ipfs cat $@ | $prog ;;
+add) ipfs add $@ ;;
+*) die "$USAGE" ;;
+esac
